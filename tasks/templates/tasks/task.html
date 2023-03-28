@@ -1,0 +1,14 @@
+{% extends 'starter.html' %}
+{% block title %} <h3>Task: {{task.task}}</h3> {% endblock %}
+{% block content%}
+<div class="offset-1 col-10 list-div">
+    <label for="status">Status:</label>
+    <input id="task" type="text" name="task" value="{{task.done}}">
+    <p></p>
+    <label for="initial-date">Initial Date:</label>
+    <input id="initial-date" type="text" name="initial-date" value="{{task.initial_date}}">
+    <p></p>
+    <label for="final-date">Final Date:</label>
+    <input id="final-date" type="text" name="final-date" value="{{task.final_date}}">
+</div>
+{% endblock %}

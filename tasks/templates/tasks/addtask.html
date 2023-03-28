@@ -1,0 +1,15 @@
+{% extends 'starter.html' %}
+
+{% block title %} <h3> Add Task </h3> {% endblock %}
+{% block content %}
+<div class="cols-6">
+  <form class="form-horizontal" action="." method="post">
+    {% csrf_token %}
+    <label for="new_task">Task Name</label>
+    <input id="task" type="text" name="task">
+    <label for="status">Status</label>
+    <input id="status" type="text" name="status">
+    <input type="submit" value="Add Task">
+  </form>
+</div>
+{% endblock %}

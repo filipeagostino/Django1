@@ -1,0 +1,46 @@
+{% extends 'schedule/starter.html' %}
+{% block title %} <h3> Contact List </h3> {% endblock %}
+{% block content%}
+<div class="div-align">
+        <div class="offset-1 col-10 list-div">
+            <a id="add-link" href="/schedule/create/">
+                <div class="col-2 add-div">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </a>
+        </div>
+        <div class="col-9 search-div">
+            <form method="GET" id="search-form">
+                <input class="form-control" type="text" name="search" id="search" placeholder="Enter item to search" value="{{ request.GET.search }}">
+                <i class="fas fa-search" id="search-btn"></i>
+            </form>
+        </div>
+    </div>
+    <ul class="schedule-list">
+        {% for item in items %}
+        <li class="schedule-item">
+            <span><a href="/schedule/item/{{item.id}}">{{item.name}}</a></span>
+            <a href="/schedule/delete/{{item.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
+            <a href="/schedule/update/{{item.id}}"><span><i class="fas fa-edit"></i></span></a>
+        </li>
+        {% endfor %}
+    </ul>
+        <div class="pagination">
+            <span class="step-links">
+                {% if items.has_previous %}
+                    <a href="?page={{ items.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+                {% endif %}
+                
+                {% if items.paginator.num_pages %}
+                <span class="current">
+                    {{ items.number}} of {{ items.paginator.num_pages }}
+                </span>
+                {% endif %}
+
+                {% if items.has_next %}
+                    <a href="?page={{ items.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}
